@@ -5,6 +5,8 @@ Notes
 
 **Caution when using. Systems are rebooted and installed without further inquiry.**
 
+**Before running playbook you have to import your ssh-key in robot panel**
+
 Platforms
 ---------
 
@@ -27,7 +29,7 @@ Example playbook
   vars:
     hetzner_webservice_username: "your_hetzner_webservice_user"
     hetzner_webservice_password: "your_hetzner_webservice_password"
-    hetzner_image: "/root/.oldroot/nfs/install/../images/CentOS-75-64-minimal.tar.gz"
+    hetzner_image: "/root/.oldroot/nfs/install/../images/CentOS-76-64-minimal.tar.gz"
     hetzner_hostname: "hostname.example.com"
 
   tasks:
@@ -41,6 +43,7 @@ Example autosetup file
 
 The following ``autosetup`` file  will be used by default. Modify ``roles/provision-hetzner/templates/autosetup`` or create your own and set ``{{ hetzner_autosetup_file }}``.
  Further details regarding the file can be found at [Hetzner in the wiki](https://wiki.hetzner.de/index.php/Installimage/en#autosetup).
+Also It can be modified through variable files. ``roles/vars/main.yml ``
 
 ```
 DRIVE1 /dev/sda
@@ -64,6 +67,7 @@ Hetzner offers a collection of images which can be set via ``{{ hetzner_image }}
 * archlinux-latest-64-minimal.tar.gz
 * CentOS-610-64-minimal.tar.gz
 * CentOS-75-64-minimal.tar.gz
+* CentOS-76-64.minimal.tar.gz
 * CoreOS-1298-64-production.bin.bz2
 * Debian-811-jessie-64-minimal.tar.gz
 * Debian-95-stretch-64-minimal.tar.gz
@@ -72,6 +76,20 @@ Hetzner offers a collection of images which can be set via ``{{ hetzner_image }}
 * Ubuntu-1804-bionic-64-minimal.tar.gz
 
 You can alos build a custom image and host it on a public webserver. In that case {{ hetzner_image }} needs to point to that location.
+
+Example inventory
+-------
+You can create an inventory file like this:
+
+```
+[hetzner]
+172.16.0.1
+172.16.0.2
+172.16.0.3
+
+```
+Those above IPs will be set as your primary IP. 
+**Keep in mind to use your "Main" Public IP Addresses**
 
 License
 -------
