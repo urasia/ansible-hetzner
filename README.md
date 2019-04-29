@@ -27,10 +27,7 @@ Example playbook
   remote_user: root
 
   vars:
-    hetzner_webservice_username: "your_hetzner_webservice_user"
-    hetzner_webservice_password: "your_hetzner_webservice_password"
     hetzner_image: "/root/.oldroot/nfs/install/../images/CentOS-76-64-minimal.tar.gz"
-    hetzner_hostname: "hostname.example.com"
 
   tasks:
   - import_role:
@@ -83,9 +80,9 @@ You can create an inventory file like this:
 
 ```
 [hetzner]
-172.16.0.1 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
-172.16.0.2 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
-172.16.0.3 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
+172.16.0.1 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD hetzner_hostname=node1
+172.16.0.2 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD hetzner_hostname=node2
+172.16.0.3 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD hetzner_hostname=node3
 
 ```
 Those above IPs will be set as your primary IP. 
