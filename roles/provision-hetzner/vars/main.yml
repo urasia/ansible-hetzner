@@ -1,7 +1,11 @@
 ---
 
 hetzner_autosetup_file: autosetup
-
+vg0_size: 256G
+root_size: 230G
+swap_size: 16G
+cinder_vg_creation: false
+hw_raid: false
 # hetzner_webservice_username: 
 # hetzner_webservice_password:
 # hetzner_image: "/root/.oldroot/nfs/install/../images/CentOS-75-64-minimal.tar.gz"

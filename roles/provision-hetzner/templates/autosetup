@@ -1,14 +1,20 @@
 DRIVE1 /dev/sda
 DRIVE2 /dev/sdb
+{% if "sw_raid" is sameas "true" %}
 SWRAID 1
 SWRAIDLEVEL 0
+{% else %}
+SWRAID 0
+SWRAIDLEVEL 0
+{% endif %}
 BOOTLOADER grub
 HOSTNAME {{ hetzner_hostname }}
 PART /boot ext3 512M
-PART lvm vg0 500G
+PART lvm vg0 {{ vg0_size }}
+{% if cinder_vg_creation is sameas "true" %}
 PART lvm cinder-volumes all
-
-LV vg0 root / ext4 100G
-LV vg0 swap swap swap 5G
+{% endif %}
+LV vg0 root / ext4 {{ root_size }}
+LV vg0 swap swap swap {{ swap_size }}
 
 IMAGE {{ hetzner_image }}
