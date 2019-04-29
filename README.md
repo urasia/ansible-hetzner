@@ -83,9 +83,9 @@ You can create an inventory file like this:
 
 ```
 [hetzner]
-172.16.0.1
-172.16.0.2
-172.16.0.3
+172.16.0.1 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
+172.16.0.2 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
+172.16.0.3 hetzner_webservice_username=#USERNAME hetzner_webservice_password=$PASSWORD
 
 ```
 Those above IPs will be set as your primary IP. 
